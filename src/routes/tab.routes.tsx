@@ -1,50 +1,59 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
-// import { HomeRoutes, SearchRoutes, FavoriteRoutes } from "./stack.routes";
-import SignIn from "../pages/SignIn";
-import SignUp from "../pages/SignUp";
+//Pages Components
 import Home from "../pages/Home";
 import New from "../pages/New";
+import Profile from "../pages/Profile";
+import { useTheme } from "../theme/ThemeContext";
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
 export default function TabRoutes() {
+  const { theme } = useTheme();
+
   return (
     <Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "SignIn") {
-            iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "SignUp") {
-            iconName = focused ? "search" : "search-outline";
-          } else if (route.name === "Home") {
-            iconName = focused ? "heart" : "heart-outline";
+          switch (route.name) {
+            case "Início":
+              iconName = "home";
+              break;
+            case "Nova Receita":
+              iconName = "plus-thick";
+              break;
+            case "Perfil":
+              iconName = "account";
+              break;
+            default:
+            case "Início":
+              iconName = "home";
+              break;
           }
-          return <Ionicons name={iconName} size={size} color={color} />;
+          size = focused ? size * 1.1 : size;
+          return <Icon name={iconName} size={size} color={color} />;
         },
         headerShown: false,
         tabBarHideOnKeyboard: true,
-        tabBarShowLabel: false,
-        tabBarActiveTintColor: "#31D618",
-        tabBarInactiveTintColor: "#007319",
-        tabBarActiveBackgroundColor: "rgba(16,18,16,0.9)",
-        tabBarInactiveBackgroundColor: "rgba(16,18,16,0.9)",
+        tabBarActiveTintColor: theme.colors.primary,
+        tabBarInactiveTintColor: theme.colors.textDark,
+        tabBarActiveBackgroundColor: theme.colors.background,
+        tabBarInactiveBackgroundColor: theme.colors.background,
         tabBarStyle: {
           borderTopWidth: 0,
           position: "absolute",
           bottom: 0,
           left: 0,
-          backgroundColor: "transparent",
         },
       })}
-      initialRouteName="SignIn"
+      initialRouteName="Início"
     >
-      <Screen component={SignIn} name={"SignIn"} />
-      <Screen component={SignUp} name={"SignUp"} />
-      <Screen component={Home} name={"Home"} />
+      <Screen component={Home} name={"Início"} />
+      <Screen component={New} name={"Nova Receita"} />
+      <Screen component={Profile} name={"Perfil"} />
     </Navigator>
   );
 }
