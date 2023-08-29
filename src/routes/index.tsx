@@ -1,21 +1,18 @@
 import React from "react";
 
 import TabRoutes from "./tab.routes";
-import { StatusBar } from "react-native";
-import { useTheme } from "../theme/ThemeContext";
-
+import { SafeAreaView, StatusBar } from "react-native";
+import { colors } from "../theme";
 export default function Routes() {
-  const { theme } = useTheme();
-
   return (
-    <>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar
-        backgroundColor={theme.colors.background}
+        backgroundColor={colors.background}
         translucent={false}
         barStyle="dark-content"
         showHideTransition="slide"
       />
       <TabRoutes />
-    </>
+    </SafeAreaView>
   );
 }

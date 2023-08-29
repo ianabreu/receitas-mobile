@@ -6,13 +6,12 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import Home from "../pages/Home";
 import New from "../pages/New";
 import Profile from "../pages/Profile";
-import { useTheme } from "../theme/ThemeContext";
+
+import { colors } from "../theme";
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
 export default function TabRoutes() {
-  const { theme } = useTheme();
-
   return (
     <Navigator
       screenOptions={({ route }) => ({
@@ -38,10 +37,10 @@ export default function TabRoutes() {
         },
         headerShown: false,
         tabBarHideOnKeyboard: true,
-        tabBarActiveTintColor: theme.colors.primary,
-        tabBarInactiveTintColor: theme.colors.textDark,
-        tabBarActiveBackgroundColor: theme.colors.background,
-        tabBarInactiveBackgroundColor: theme.colors.background,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.text,
+        tabBarActiveBackgroundColor: colors.background,
+        tabBarInactiveBackgroundColor: colors.background,
         tabBarStyle: {
           borderTopWidth: 0,
           position: "absolute",

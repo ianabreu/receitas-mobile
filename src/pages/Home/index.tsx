@@ -1,16 +1,14 @@
 import React from "react";
-import { SafeAreaView, Text, TouchableOpacity } from "react-native";
-import { useTheme } from "../../theme/ThemeContext";
-
-export default function Home() {
-  const { theme } = useTheme();
-
+import { Text, TextInput } from "react-native";
+import { TextLogo } from "../../components/ui/TextLogo";
+import { Container } from "../../components/layout/Container";
+import { styles } from "./styles";
+export default function Home(): React.JSX.Element {
   return (
-    <SafeAreaView style={{ backgroundColor: theme.colors.background }}>
-      <Text style={{ color: theme.colors.textDark }}>Home</Text>
-      <TouchableOpacity style={{ backgroundColor: theme.colors.primary }}>
-        <Text style={{ color: theme.colors.textDark }}>Clique aqui</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <Container>
+      <TextLogo>Cantinho das Receitas</TextLogo>
+      <Text style={styles.title}>Encontre a receita que combina com você</Text>
+      <TextInput />
+    </Container>
   );
 }
