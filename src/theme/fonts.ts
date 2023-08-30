@@ -2,15 +2,16 @@ import { Ifonts } from "../@types/Theme";
 
 export const fonts: Ifonts = {
   family: {
-    regular: "Ubuntu-Regular",
-    bold: "Ubuntu-Bold",
+    regular: "Merriweather-Regular",
+    bold: "Merriweather-Bold",
+    styled: "Merienda-Bold",
   },
   size: {
-    sm: 14,
-    md: 16,
-    lg: 18,
-    xl: 20,
-    xxl: 24,
-    xxxl: 28,
+    sm: 12,
+    md: 14,
+    lg: 16,
+    xl: 18,
+    xxl: 22,
+    xxxl: 26,
   },
 };

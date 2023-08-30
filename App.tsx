@@ -9,8 +9,9 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "Ubuntu-Bold": require("./src/assets/fonts/ubuntuBold.ttf"),
-    "Ubuntu-Regular": require("./src/assets/fonts/ubuntuRegular.ttf"),
+    "Merienda-Bold": require("./src/assets/fonts/Merienda-Bold.ttf"),
+    "Merriweather-Bold": require("./src/assets/fonts/Merriweather-Bold.ttf"),
+    "Merriweather-Regular": require("./src/assets/fonts/Merriweather-Regular.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {

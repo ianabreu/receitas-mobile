@@ -31,6 +31,7 @@ export interface Ifonts {
   family: {
     regular: string;
     bold: string;
+    styled: string;
   };
   size: {
     sm: number;

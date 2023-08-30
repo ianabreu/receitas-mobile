@@ -9,7 +9,7 @@ type Styles = {
 export const styles = StyleSheet.create<Styles>({
   title: {
     fontFamily: fonts.family.bold,
-    fontSize: fonts.size.xxxl,
+    fontSize: fonts.size.xxl,
     marginVertical: metrics.margin_default,
     color: colors.text,
   },
