@@ -21,6 +21,7 @@ export function Feed({ data, handleOpenDetails }: ListRecipesProps) {
       renderItem={({ item }) => (
         <FeedItem onPress={handleOpenDetails} item={item} />
       )}
+      showsVerticalScrollIndicator={false}
     />
   );
 }

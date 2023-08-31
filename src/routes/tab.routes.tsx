@@ -7,7 +7,8 @@ import Home from "../pages/Home";
 import New from "../pages/New";
 import Profile from "../pages/Profile";
 
-import { colors } from "../theme";
+//Theme
+import { colors, fonts, metrics } from "../theme";
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
@@ -42,10 +43,13 @@ export default function TabRoutes() {
         tabBarActiveBackgroundColor: colors.background,
         tabBarInactiveBackgroundColor: colors.background,
         tabBarStyle: {
-          borderTopWidth: 0,
-          position: "absolute",
-          bottom: 0,
-          left: 0,
+          borderWidth: 0,
+          borderColor: colors.background,
+          height: metrics.tabBarHeight,
+        },
+        tabBarLabelStyle: {
+          fontSize: fonts.size.sm,
+          fontFamily: fonts.family.regular,
         },
       })}
       initialRouteName="Início"
