@@ -1,26 +1,28 @@
 import React from "react";
-import { Text, TextStyle } from "react-native";
+import { Text, TextProps, TextStyle } from "react-native";
 import { colors, fonts, metrics } from "../../../theme";
 
 type TypographProps = {
   content: string;
   variant: keyof variantsTextProps;
-};
+  allign?: "auto" | "justify" | "center" | "left" | "right";
+} & TextProps;
 type variantsTextProps = {
+  largestTitle: TextStyle;
   title: TextStyle;
-  subtitle: TextStyle;
   label: TextStyle;
   button: TextStyle;
   body: TextStyle;
+  small: TextStyle;
 };
 const variantsText: variantsTextProps = {
-  title: {
+  largestTitle: {
     fontFamily: fonts.family.bold,
     fontSize: fonts.size.xxl,
     marginVertical: metrics.margin_default,
     color: colors.text,
   },
-  subtitle: {
+  title: {
     fontFamily: fonts.family.bold,
     fontSize: fonts.size.xl,
     marginVertical: metrics.margin_default,
@@ -41,7 +43,21 @@ const variantsText: variantsTextProps = {
     fontSize: fonts.size.md,
     color: colors.text,
   },
+  small: {
+    fontFamily: fonts.family.regular,
+    fontSize: fonts.size.sm,
+    color: colors.textLight,
+  },
 };
-export function Typography({ content, variant }: TypographProps) {
-  return <Text style={variantsText[variant]}>{content}</Text>;
+export function Typography({
+  content,
+  variant,
+  allign = "left",
+  ...rest
+}: TypographProps) {
+  return (
+    <Text {...rest} style={[variantsText[variant], { textAlign: allign }]}>
+      {content}
+    </Text>
+  );
 }

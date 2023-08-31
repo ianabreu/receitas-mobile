@@ -11,13 +11,16 @@ export interface Recipe {
 }
 type ListRecipesProps = {
   data: Recipe[];
+  handleOpenDetails: (id_recipe: string) => void;
 };
-export function Feed({ data }: ListRecipesProps) {
+export function Feed({ data, handleOpenDetails }: ListRecipesProps) {
   return (
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <FeedItem item={item} />}
+      renderItem={({ item }) => (
+        <FeedItem onPress={handleOpenDetails} item={item} />
+      )}
     />
   );
 }
