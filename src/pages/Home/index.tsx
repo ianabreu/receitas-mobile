@@ -4,7 +4,8 @@ import { Container } from "../../components/layout/Container";
 import { Input } from "../../components/ui/Input";
 import { Typography } from "../../components/ui/Typography";
 import { Feed, Recipe } from "../../components/layout/Feed";
-export default function Home(): React.JSX.Element {
+
+export default function Home() {
   const data: Recipe[] = [
     {
       id: "1",

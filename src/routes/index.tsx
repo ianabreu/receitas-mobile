@@ -1,7 +1,8 @@
 import React from "react";
 
 import TabRoutes from "./tab.routes";
-import { SafeAreaView, StatusBar } from "react-native";
+import { SafeAreaView } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { colors } from "../theme";
 export default function Routes() {
   return (
@@ -9,8 +10,7 @@ export default function Routes() {
       <StatusBar
         backgroundColor={colors.background}
         translucent={false}
-        barStyle="dark-content"
-        showHideTransition="slide"
+        hidden={false}
       />
       <TabRoutes />
     </SafeAreaView>

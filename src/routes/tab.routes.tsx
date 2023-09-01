@@ -4,8 +4,8 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 //Pages Components
 import Home from "../pages/Home";
-import New from "../pages/New";
 import Profile from "../pages/Profile";
+import StepRoutes from "./steps.routes";
 
 //Theme
 import { colors, fonts, metrics } from "../theme";
@@ -55,7 +55,7 @@ export default function TabRoutes() {
       initialRouteName="Início"
     >
       <Screen component={Home} name={"Início"} />
-      <Screen component={New} name={"Nova Receita"} />
+      <Screen component={StepRoutes} name={"Nova Receita"} />
       <Screen component={Profile} name={"Perfil"} />
     </Navigator>
   );
