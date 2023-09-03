@@ -1,19 +1,23 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import { Typography } from "../../components/ui/Typography";
+import React from "react";
+import { View, Image } from "react-native";
+
 import { Container } from "../../components/layout/Container";
-import { FontAwesome as Icon } from "@expo/vector-icons";
-import { metrics } from "../../theme";
-import { Input } from "../../components/ui/Input";
+import { Typography } from "../../components/ui/Typography";
 import { FormInputText } from "../../components/patterns/FormInputText";
+import { FormPickerSelect } from "../../components/patterns/FormPickerSelect";
+
+import { metrics } from "../../theme";
+
+export interface ICategory {
+  id: string;
+  name: string;
+}
 export default function Step1() {
+  const categories: ICategory[] = [
+    { id: "0", name: "Macarrão" },
+    { id: "1", name: "Sorvetes" },
+    { id: "4", name: "Massas" },
+  ];
   return (
     <Container>
       <Typography content="Nova Receita" variant="title" allign="center" />
@@ -40,10 +44,13 @@ export default function Step1() {
       />
       <FormInputText label="Título" placeholder="Digite um título" />
       <FormInputText label="Descrição" placeholder="Digite uma descrição" />
+      <FormPickerSelect categories={categories} label="Categoria" />
       <FormInputText
         label="Link do Youtube"
         placeholder="Digite um link da receita no Youtube"
       />
+
+      <View></View>
     </Container>
   );
 }

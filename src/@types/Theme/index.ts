@@ -8,6 +8,7 @@ export interface Icolors {
   textLight: string;
   border: string;
   notification: string;
+  transparentBackground: string;
 }
 
 export interface Imetrics {

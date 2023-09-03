@@ -10,4 +10,5 @@ export const colors: Icolors = {
   textLight: "#FAFAFA",
   border: "#BABABA",
   notification: "#BE4C4C",
+  transparentBackground: "rgba(16,16,16,0.5)",
 };
