@@ -7,7 +7,8 @@ import { FormInputText } from "../../components/patterns/FormInputText";
 import { FormPickerSelect } from "../../components/patterns/FormPickerSelect";
 
 import { metrics } from "../../theme";
-import FormImagePicker from "../../components/patterns/FormImagePicker";
+import { FormImagePicker } from "../../components/patterns/FormImagePicker";
+import { StepButtons } from "../../components/patterns/StepButtons";
 
 export interface ICategory {
   id: string;
@@ -52,6 +53,7 @@ export default function Step1() {
           label="Link do Youtube"
           placeholder="Digite um link da receita no Youtube"
         />
+        <StepButtons />
       </ScrollView>
     </Container>
   );

@@ -31,7 +31,7 @@ export const variantsText: variantsTextProps = {
   },
   button: {
     fontFamily: fonts.family.bold,
-    fontSize: fonts.size.lg,
+    fontSize: fonts.size.xl,
     color: colors.textLight,
   },
   body: {
