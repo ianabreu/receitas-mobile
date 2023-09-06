@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { FormProvider } from "./src/contexts/FormContext";
 
 import Routes from "./src/routes";
 
@@ -26,8 +27,10 @@ export default function App() {
   onLayoutRootView();
 
   return (
-    <NavigationContainer>
-      <Routes />
-    </NavigationContainer>
+    <FormProvider>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </FormProvider>
   );
 }
