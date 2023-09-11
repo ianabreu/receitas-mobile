@@ -4,7 +4,7 @@ import { styles } from "./styles";
 
 import { Typography } from "../Typography";
 
-import { ICategory } from "../../../pages/Step1";
+import { ICategory } from "../../templates/Step1";
 
 type ModalPickerProps = {
   handleCloseModal: () => void;

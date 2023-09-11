@@ -1,34 +1,25 @@
 import React from "react";
-import {
-  TextInput,
-  TextInputProps,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-} from "react-native";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import { TextInput, TextInputProps, View } from "react-native";
+import { Typography } from "../Typography";
 
 import { styles } from "./styles";
 import { colors } from "../../../theme";
 
-type Props = {
-  icon?: keyof typeof Icon.glyphMap;
-} & TextInputProps &
-  TouchableOpacityProps;
+export interface InputProps extends TextInputProps {
+  label?: string;
+}
 
-export function Input({ placeholder, icon }: Props) {
+export function Input({ label, ...rest }: InputProps) {
   return (
-    <View style={styles.container}>
-      <TextInput
-        placeholder={placeholder}
-        style={styles.input}
-        placeholderTextColor={colors.textSoft}
-      />
-      {icon && (
-        <TouchableOpacity style={styles.button}>
-          <Icon style={styles.icon} name={icon} />
-        </TouchableOpacity>
-      )}
-    </View>
+    <>
+      {label && <Typography content={label} variant="label" />}
+      <View style={styles.container}>
+        <TextInput
+          style={styles.input}
+          placeholderTextColor={colors.textSoft}
+          {...rest}
+        />
+      </View>
+    </>
   );
 }

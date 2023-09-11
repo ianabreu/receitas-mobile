@@ -4,14 +4,14 @@ import { colors, metrics } from "../../../theme";
 interface Styles {
   button: ViewStyle;
   defaultImage: ImageStyle;
-  imagePreview: ImageStyle;
+  imageURL: ImageStyle;
 }
 
 export const styles = StyleSheet.create<Styles>({
   button: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
 
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create<Styles>({
     width: 45,
     height: 45,
   },
-  imagePreview: {
+  imageURL: {
     width: metrics.screenWidth - metrics.padding_large,
     aspectRatio: 16 / 9,
   },

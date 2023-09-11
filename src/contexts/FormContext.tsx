@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext, useReducer } from "react";
 
 type State = {
-  currentStep: number;
+  currentStep: 1 | 2 | 3 | 4;
   title: string;
   description: string;
   category: string;
@@ -23,7 +23,7 @@ type FormProviderProps = {
 const FormContext = createContext<ContextType | undefined>(undefined);
 
 const initialData: State = {
-  currentStep: 0,
+  currentStep: 1,
   title: "",
   description: "",
   category: "",
@@ -67,9 +67,9 @@ export const FormProvider = ({ children }: FormProviderProps) => {
 };
 
 //Context Hook
-export const useForm = () => {
+export const useFormStep = () => {
   const context = useContext(FormContext);
   if (context === undefined)
-    throw new Error("useForm precisa ser usado dentro do FormProvider");
+    throw new Error("useFormStep precisa ser usado dentro do FormProvider");
   return context;
 };

@@ -1,37 +1,61 @@
 import React from "react";
-import { TouchableOpacity, Image } from "react-native";
+import {
+  TouchableOpacity,
+  Image,
+  TouchableOpacityProps,
+  TextInputProps,
+} from "react-native";
 import { styles } from "./styles";
 
 import { Typography } from "../Typography";
+import { MediaTypeOptions, launchImageLibraryAsync } from "expo-image-picker";
 
-type ImagePickerInputProps = {
+export type ImagePickerInputProps = {
+  setImageURL: (url: string) => void;
   label: string;
-  onPress: () => void;
-  imagePreview: string;
-};
+  placeholder: string;
+  imageURL?: string;
+} & TouchableOpacityProps;
 
-export default function ImagePickerInput({
-  onPress,
+export function ImagePickerInput({
+  setImageURL,
   label,
-  imagePreview,
-}: ImagePickerInputProps) {
+  placeholder,
+  imageURL,
+  ...touchableOpacityProps
+}: ImagePickerInputProps & TextInputProps) {
+  const pickImage = async () => {
+    let result = await launchImageLibraryAsync({
+      mediaTypes: MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [16, 9],
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setImageURL(result.assets[0].uri);
+    }
+  };
   return (
-    <TouchableOpacity
-      activeOpacity={0.98}
-      style={styles.button}
-      onPress={onPress}
-    >
-      {imagePreview ? (
-        <Image source={{ uri: imagePreview }} style={styles.imagePreview} />
-      ) : (
-        <>
-          <Image
-            source={require("../../../assets/images/defaultImage.png")}
-            style={styles.defaultImage}
-          />
-          <Typography content={label} variant="placeholder" />
-        </>
-      )}
-    </TouchableOpacity>
+    <>
+      <Typography content={label} variant="label" />
+      <TouchableOpacity
+        activeOpacity={0.95}
+        style={styles.button}
+        onPress={pickImage}
+        {...touchableOpacityProps}
+      >
+        {imageURL ? (
+          <Image source={{ uri: imageURL }} style={styles.imageURL} />
+        ) : (
+          <>
+            <Image
+              source={require("../../../assets/images/defaultImage.png")}
+              style={styles.defaultImage}
+            />
+            <Typography content={placeholder} variant="placeholder" />
+          </>
+        )}
+      </TouchableOpacity>
+    </>
   );
 }

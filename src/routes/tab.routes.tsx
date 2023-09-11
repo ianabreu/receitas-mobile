@@ -5,10 +5,12 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 //Pages Components
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
-import StepRoutes from "./steps.routes";
+import New from "../pages/New";
 
 //Theme
 import { colors, fonts, metrics } from "../theme";
+
+type IconNameType = keyof typeof Icon.glyphMap;
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
@@ -17,7 +19,7 @@ export default function TabRoutes() {
     <Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+          let iconName: IconNameType;
           switch (route.name) {
             case "Início":
               iconName = "home";
@@ -55,7 +57,7 @@ export default function TabRoutes() {
       initialRouteName="Início"
     >
       <Screen component={Home} name={"Início"} />
-      <Screen component={StepRoutes} name={"Nova Receita"} />
+      <Screen component={New} name={"Nova Receita"} />
       <Screen component={Profile} name={"Perfil"} />
     </Navigator>
   );

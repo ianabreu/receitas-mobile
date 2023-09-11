@@ -6,28 +6,36 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import { Typography } from "../Typography";
 import { ModalPicker } from "./ModalPicker";
 
-import { ICategory } from "../../../pages/Step1";
+import { ICategory } from "../../templates/Step1";
 
-type PickerSelectProps = {
-  items: ICategory[];
+export type PickerSelectProps = {
+  options: ICategory[];
+  onChange?: (...event: any) => void;
+  onBlur?: () => void;
+  value?: ICategory;
+  label?: string;
 };
-export function PickerSelect({ items }: PickerSelectProps) {
-  const options = [
+export function PickerSelect({ options, label, onChange }: PickerSelectProps) {
+  const OPTIONS = [
     {
       id: "empty",
       name: "Selecione uma categoria",
     },
-    ...items,
+    ...options,
   ];
   const [selectedCategory, setSelectedCategory] = useState<ICategory>(
-    options[0]
+    OPTIONS[0]
   );
   const [modalVisible, setModalVisible] = useState(false);
-  function handleChangeCategory(item: ICategory) {
-    setSelectedCategory(item);
+
+  function handleChangeCategory(option: ICategory) {
+    setSelectedCategory(option);
+    onChange(option);
   }
   return (
     <>
+      {label && <Typography content={label} variant="label" />}
+
       <TouchableOpacity
         onPress={() => setModalVisible(true)}
         style={styles.modal}
@@ -45,7 +53,7 @@ export function PickerSelect({ items }: PickerSelectProps) {
       <Modal visible={modalVisible} transparent animationType="fade">
         <ModalPicker
           handleCloseModal={() => setModalVisible(false)}
-          options={options}
+          options={OPTIONS}
           selectedItem={handleChangeCategory}
         />
       </Modal>
